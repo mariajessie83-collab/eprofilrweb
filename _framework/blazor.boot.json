@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Gsystem",
   "resources": {
-    "hash": "sha256-w+f7yO3tcGYjvnWAOTRj9PIzfl0g9+VXP/IhAsTzNLE=",
+    "hash": "sha256-g6+AsaCOMeruVEOAipyrayzEKSbuou9HiEBprG2HMDc=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-NljIbpK/1KCj0+knpX8U77Rbl5kTtfFIuFjK7AuczEw="
     },
@@ -62,7 +62,7 @@
       "System.Web.HttpUtility.wasm": "sha256-Frj3cf7v88NwIBzESPBLSQb9vpenGm4Gj1R/M4ttS+Y=",
       "System.wasm": "sha256-jXhnUNHzjjL7Plo7WcHuX7V5Dc/Umt+qmGGC+Js76SE=",
       "System.Private.CoreLib.wasm": "sha256-u5Vy0wvFxR387kaEZpEESBTRpKGxSyToUZe8gM/13Hk=",
-      "Gsystem.wasm": "sha256-yfQh7LEoaAwUSWNSQPZFxo4UkVuTQCK5k849JGIJH10="
+      "Gsystem.wasm": "sha256-g0YpbQQZIWiFzInoL8bjbVkntLyKp5kLU1MsL352bQc="
     }
   },
   "cacheBootResources": true,
