@@ -1,0 +1,462 @@
+:root {
+    --bs-body-font-family: 'Poppins', sans-serif !important;
+    --bs-font-sans-serif: 'Poppins', sans-serif !important;
+}
+
+html,
+body {
+    font-family: 'Poppins', sans-serif !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-size: 16px;
+}
+
+/* GLOBAL FIX: Ensure FontAwesome icons always use their own font family */
+.fa,
+.fas,
+.far,
+.fab,
+.fa-solid,
+.fa-regular,
+.fa-brands {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+}
+
+.fab,
+.fa-brands {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+}
+
+/* General Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+a,
+button,
+input,
+select,
+textarea,
+label,
+td,
+th,
+li,
+.btn,
+.form-control {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Bootstrap Overrides */
+[class*="container"],
+[class*="row"],
+[class*="col"] {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.nav,
+.navbar,
+.nav-item,
+.nav-link,
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger,
+.btn-outline {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.form-control,
+.form-select,
+.form-label,
+.form-check,
+.form-check-input,
+.form-check-label,
+.table,
+.table th,
+.table td,
+.table tr,
+.card,
+.card-header,
+.card-body,
+.card-footer,
+.card-title,
+.card-text,
+.modal,
+.modal-header,
+.modal-body,
+.modal-footer,
+.modal-title,
+.badge,
+.alert {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* POD specific overrides */
+.pod-header,
+.pod-app-name,
+.pod-sub,
+.pod-nav-item,
+.pod-logout-btn {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.pod-dashboard-container,
+.pod-dashboard-header {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.stat-card,
+.stat-card h3,
+.stat-card p {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.section-header,
+.section-header h3 {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.progress-header,
+.progress-body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.status-badge {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* SimpleLayout specific overrides */
+.simple-header,
+.simple-header h3,
+.app-subtitle,
+.app-name {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.top-nav,
+.nav-item {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.login-btn,
+.logout-btn,
+.welcome-text,
+.datetime {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.dropdown-content,
+.dropdown-content a,
+.dropdown-link {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.mobile-nav-item,
+.mobile-nav-menu {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+h1:focus {
+    outline: none;
+}
+
+a,
+.btn-link {
+    color: #7a0019;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #7a0019;
+    border-color: #5d0013;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #7a0019;
+}
+
+.content {
+    padding-top: 1.1rem;
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+.blazor-error-boundary {
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljjg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, #b32121;
+    padding: 1rem 1rem 1rem 3.7rem;
+    color: white;
+}
+
+.blazor-error-boundary::after {
+    content: "An error has occurred."
+}
+
+@import url("https://fonts.googleapis.com/css?family=Fredoka+One");
+
+.hexagon-loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #00498D;
+    z-index: 20000;
+    overflow: hidden;
+}
+
+.loader {
+    width: 160px;
+    height: 160px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 2px solid #E3E4DC;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.loader:before {
+    content: '';
+    width: 164px;
+    height: 164px;
+    display: block;
+    position: absolute;
+    border: 2px solid #898a86;
+    border-radius: 50%;
+    top: -2px;
+    left: -2px;
+    box-sizing: border-box;
+    clip: rect(0px, 35px, 35px, 0px);
+    z-index: 10;
+    animation: rotate 3s linear infinite;
+}
+
+.loader:after {
+    content: '';
+    width: 164px;
+    height: 164px;
+    display: block;
+    position: absolute;
+    border: 2px solid #c1bebb;
+    border-radius: 50%;
+    top: -2px;
+    left: -2px;
+    box-sizing: border-box;
+    clip: rect(0px, 164px, 150px, 0px);
+    z-index: 9;
+    animation: rotate2 3s linear infinite;
+}
+
+.hexagon-container {
+    position: relative;
+    top: 33px;
+    left: 41px;
+    border-radius: 50%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hexagon {
+    position: absolute;
+    width: 40px;
+    height: 23px;
+    background-color: #3b82f6;
+    /* Adjusted to brand blue */
+}
+
+.hexagon:before {
+    content: "";
+    position: absolute;
+    top: -11px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 11.5px solid #3b82f6;
+}
+
+.hexagon:after {
+    content: "";
+    position: absolute;
+    top: 23px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 11.5px solid #3b82f6;
+}
+
+.hexagon.hex_1 {
+    top: 0px;
+    left: 0px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 0.214s;
+}
+
+.hexagon.hex_2 {
+    top: 0px;
+    left: 42px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 0.428s;
+}
+
+.hexagon.hex_3 {
+    top: 36px;
+    left: 63px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 0.642s;
+}
+
+.hexagon.hex_4 {
+    top: 72px;
+    left: 42px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 0.857s;
+}
+
+.hexagon.hex_5 {
+    top: 72px;
+    left: 0px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 1.071s;
+}
+
+.hexagon.hex_6 {
+    top: 36px;
+    left: -21px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 1.285s;
+}
+
+.hexagon.hex_7 {
+    top: 36px;
+    left: 21px;
+    animation: Animasearch 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+.loader-text {
+    color: #94a3b8;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes Animasearch {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    15%,
+    50% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    65% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+        clip: rect(0px, 35px, 35px, 0px);
+    }
+
+    50% {
+        clip: rect(0px, 40px, 40px, 0px);
+    }
+
+    100% {
+        transform: rotate(360deg);
+        clip: rect(0px, 35px, 35px, 0px);
+    }
+}
+
+@keyframes rotate2 {
+    0% {
+        transform: rotate(0deg);
+        clip: rect(0px, 164px, 150px, 0px);
+    }
+
+    50% {
+        clip: rect(0px, 164px, 0px, 0px);
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+        clip: rect(0px, 164px, 150px, 0px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

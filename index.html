@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gsystem</title>
+    <base href="/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="Gsystem.styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Poppins font override - MUST be last to override Bootstrap -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --bs-body-font-family: 'Poppins', sans-serif;
+            --bs-font-sans-serif: 'Poppins', sans-serif;
+        }
+
+        html,
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Ensure FontAwesome is respected */
+        .fa,
+        .fas,
+        .far,
+        .fa-solid,
+        .fa-regular {
+            font-family: "Font Awesome 6 Free" !important;
+            font-weight: 900;
+        }
+
+        .fab,
+        .fa-brands {
+            font-family: "Font Awesome 6 Brands" !important;
+            font-weight: 400;
+        }
+
+        /* Data Protection: No Copy, No Print */
+        html,
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media print {
+
+            html,
+            body {
+                display: none !important;
+                visibility: hidden !important;
+                height: 0 !important;
+                width: 0 !important;
+                overflow: hidden !important;
+            }
+
+            * {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+
+        /* Visual Screenshot Deterrent */
+        #restricted-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99999;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            pointer-events: none;
+        }
+
+        #restricted-overlay i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            color: #ff4d4d;
+        }
+
+        #restricted-overlay h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        #restricted-overlay p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .content-blurred {
+            filter: blur(5px) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="hexagon-loading-screen">
+            <div class="loader">
+                <ul class="hexagon-container">
+                    <li class="hexagon hex_1"></li>
+                    <li class="hexagon hex_2"></li>
+                    <li class="hexagon hex_3"></li>
+                    <li class="hexagon hex_4"></li>
+                    <li class="hexagon hex_5"></li>
+                    <li class="hexagon hex_6"></li>
+                    <li class="hexagon hex_7"></li>
+                </ul>
+            </div>
+            <div class="loader-text">Initializing ePROFILR Scholastic Portal...</div>
+        </div>
+    </div>
+
+    <!-- Restricted Overlay -->
+    <div id="restricted-overlay">
+        <i class="fas fa-hand-paper"></i>
+        <h1>ACTION RESTRICTED</h1>
+        <p>Copying or selecting content is disabled for privacy.</p>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="js/offline-auth-guard.js"></script>
+    <script>
+        // Fix for "Illegal invocation" errors in some 3rd party scripts targeting Permissions API
+        if (navigator.permissions && navigator.permissions.query) {
+            try {
+                navigator.permissions.query = navigator.permissions.query.bind(navigator.permissions);
+            } catch (e) {
+                console.warn('Failed to bind navigator.permissions.query:', e);
+            }
+        }
+    </script>
+    <script src="_framework/blazor.webassembly.js"></script>
+
+    <script>
+        window.downloadFile = function (fileName, base64Data) {
+            const link = document.createElement('a');
+            link.href = 'data:application/pdf;base64,' + base64Data;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        window.downloadHtmlFile = function (fileName, htmlContent) {
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        };
+
+        window.downloadFileFromUrl = function (url, fileName) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const link = document.createElement('a');
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    link.href = blobUrl;
+                    link.download = fileName;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(blobUrl);
+                })
+                .catch(error => {
+                    console.error('Error downloading file:', error);
+                    window.open(url, '_blank');
+                });
+        };
+
+        // Simplified Data Protection
+        let overlayTimeout;
+
+        function showRestrictedOverlay() {
+            const overlay = document.getElementById('restricted-overlay');
+            const app = document.getElementById('app');
+
+            if (overlay) overlay.style.display = 'flex';
+            if (app) app.classList.add('content-blurred');
+
+            clearTimeout(overlayTimeout);
+            overlayTimeout = setTimeout(hideRestrictedOverlay, 2000);
+        }
+
+        function hideRestrictedOverlay() {
+            const overlay = document.getElementById('restricted-overlay');
+            const app = document.getElementById('app');
+            if (overlay) overlay.style.display = 'none';
+            if (app) app.classList.remove('content-blurred');
+        }
+
+        // Trigger overlay on unauthorized actions
+        document.addEventListener('copy', (e) => {
+            e.preventDefault();
+            showRestrictedOverlay();
+        }, true);
+
+        document.addEventListener('paste', (e) => {
+            e.preventDefault();
+            showRestrictedOverlay();
+        }, true);
+
+        document.addEventListener('selectstart', (e) => {
+            e.preventDefault();
+            showRestrictedOverlay();
+        }, true);
+
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            showRestrictedOverlay();
+        }, true);
+
+        // Deter Print
+        window.addEventListener('beforeprint', showRestrictedOverlay);
+
+        // Stats Carousel Auto-Swapping logic
+        window.initStatsCarousel = (carouselId) => {
+            const carousel = document.getElementById(carouselId);
+            if (!carousel) return;
+
+            let isInteracting = false;
+            let interactionTimer;
+
+            const startAutoScroll = () => {
+                return setInterval(() => {
+                    if (isInteracting) return;
+
+                    const cardWidth = 295; // 280 (card) + 15 (gap)
+                    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                    let nextPos = carousel.scrollLeft + cardWidth;
+
+                    // Loop back to start if at the end
+                    if (nextPos >= maxScroll + 10) nextPos = 0;
+
+                    carousel.scrollTo({
+                        left: nextPos,
+                        behavior: 'smooth'
+                    });
+                }, 4000);
+            };
+
+            let autoScrollInterval = startAutoScroll();
+
+            const handleInteraction = () => {
+                isInteracting = true;
+                clearTimeout(interactionTimer);
+                // Resume auto-scroll after 8 seconds of inactivity
+                interactionTimer = setTimeout(() => {
+                    isInteracting = false;
+                }, 8000);
+            };
+
+            carousel.addEventListener('touchstart', handleInteraction, { passive: true });
+            carousel.addEventListener('mousedown', handleInteraction);
+            carousel.addEventListener('wheel', handleInteraction, { passive: true });
+        };
+    </script>
+</body>
+
+</html>
